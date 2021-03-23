@@ -4,7 +4,7 @@
 sudo apt install firefox
 ```
 ```
-sudo pip3 install selenium
+sudo pip3 install selenium fake_useragent twilio
 ```
 Also install the firefox driver
 

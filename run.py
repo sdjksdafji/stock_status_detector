@@ -8,6 +8,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium.webdriver.firefox.options import Options
 from twilio.rest import Client
+from fake_useragent import UserAgent
 
 from detect.mh_rise import check_bestbuy, check_target, check_gme
 
@@ -27,9 +28,13 @@ def notify_phone(number):
 def check_stock_status():
     options = Options()
     options.headless = True
+    useragent = UserAgent()
+    profile = webdriver.FirefoxProfile()
+    profile.set_preference("general.useragent.override", useragent.random)
+
     is_instock = False
 
-    with webdriver.Firefox(options=options) as driver:
+    with webdriver.Firefox(firefox_profile=profile, options=options) as driver:
         best_buy_result = check_bestbuy(driver)
         target_result = check_target(driver)
         gme_result = check_gme(driver)

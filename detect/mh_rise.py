@@ -25,7 +25,8 @@ def check_bestbuy(driver):
     # suppose to have only one button
     button = add_to_cart_buttons[0]
     text: str = button.text
-    if text is not None and text.strip().lower() != "coming soon":
+    print(text.strip().lower())
+    if text is not None and (text.strip().lower() == "add to cart" or text.strip().lower() == "check stores"):
         return [button]
 
     return []
