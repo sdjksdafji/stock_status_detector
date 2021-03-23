@@ -28,7 +28,7 @@ def notify_phone(number):
 def check_stock_status():
     options = Options()
     options.headless = True
-    useragent = UserAgent()
+    useragent = UserAgent(verify_ssl=False)
     profile = webdriver.FirefoxProfile()
     profile.set_preference("general.useragent.override", useragent.random)
 
