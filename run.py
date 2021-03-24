@@ -66,7 +66,10 @@ def check_and_call():
 
 if __name__ == "__main__":
     while True:
-        for i in range(100):
-            check_and_call()
-            time.sleep(10)
-        print("No stock found so far. Checking again...")
+        try:
+            for i in range(100):
+                check_and_call()
+                time.sleep(10)
+            print("No stock found so far. Checking again...")
+        except:
+            print("Exception happened")
