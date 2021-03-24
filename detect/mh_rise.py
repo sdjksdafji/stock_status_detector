@@ -1,11 +1,6 @@
 import time
 
-from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
-
 
 '''
 return the web element if the item is instock now
@@ -25,7 +20,6 @@ def check_bestbuy(driver):
     # suppose to have only one button
     button = add_to_cart_buttons[0]
     text: str = button.text
-    print(text.strip().lower())
     if text is not None and (text.strip().lower() == "add to cart" or text.strip().lower() == "check stores"):
         return [button]
 

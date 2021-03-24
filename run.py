@@ -1,14 +1,10 @@
 import os
 import time
 
+from fake_useragent import UserAgent
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support.expected_conditions import presence_of_element_located
 from selenium.webdriver.firefox.options import Options
 from twilio.rest import Client
-from fake_useragent import UserAgent
 
 from detect.mh_rise import check_bestbuy, check_target, check_gme
 
@@ -54,8 +50,17 @@ def check_stock_status():
     return is_instock
 
 
+stock_counter = 0
+
+
 def check_and_call():
+    global stock_counter
     if check_stock_status():
+        stock_counter += 1
+    else:
+        stock_counter = 0
+
+    if stock_counter >= 3:
         notify_phone("+16073791828")
 
 
