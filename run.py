@@ -71,5 +71,8 @@ if __name__ == "__main__":
                 check_and_call()
                 time.sleep(10)
             print("No stock found so far. Checking again...")
-        except:
+        except KeyboardInterrupt:
+            print("KeyboardInterrupt")
+            break
+        except Exception:
             print("Exception happened")
